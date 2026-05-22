@@ -277,15 +277,16 @@ If the architecture has more than 25 service nodes, split it into multiple logic
 pages rather than crowding one canvas. Each page gets its own `<diagram>` element:
 
 ```xml
-<mxfile ...>
+<mxfile host="app.diagrams.net" modified="" agent="Claude Code drawio-aws skill"
+  version="24.0.0" type="device">
   <diagram name="Overview" id="page-overview">
-    <!-- high-level architecture -->
+    <mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/></root></mxGraphModel>
   </diagram>
   <diagram name="Network Detail" id="page-network">
-    <!-- VPC and subnet detail -->
+    <mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/></root></mxGraphModel>
   </diagram>
   <diagram name="Data Tier" id="page-data">
-    <!-- databases, caches, storage -->
+    <mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/></root></mxGraphModel>
   </diagram>
 </mxfile>
 ```
