@@ -50,13 +50,14 @@ def validate(path: str) -> bool:
         if target and target not in ids:
             errors.append(f"ORPHANED edge target='{target}' on cell id='{cid}'")
 
-    # --- postLayout attribute check ---
+    # --- postLayout attribute check (draw.io desktop ignores this attribute) ---
     graph_models = root.findall('.//mxGraphModel')
     for gm in graph_models:
-        if not gm.get('postLayout'):
+        if gm.get('postLayout'):
             warnings.append(
-                "MISSING postLayout attribute on mxGraphModel — "
-                "draw.io won't auto-layout. Add postLayout='verticalHierarchical' or similar."
+                "postLayout attribute found on mxGraphModel — "
+                "draw.io desktop silently ignores this attribute. "
+                "Remove it and use explicit x/y coordinates for placement instead."
             )
 
     # --- Forbidden: XML comments in raw string ---
@@ -73,20 +74,29 @@ def validate(path: str) -> bool:
     if raw.count('><![CDATA[') > 0:
         errors.append("FORBIDDEN: CDATA (compressed) diagram content found — use raw XML")
 
-    # --- Warnings: coordinate concerns ---
-    non_zero_coords = []
+    # --- Warnings: all-zero coordinate check (zero-coord placement causes overlapping) ---
+    zero_coord_vertices = []
+    placed_vertices = []
     for c in cells:
-        geo = c.find('mxGeometry')
-        if geo is not None:
-            x = geo.get('x', '0')
-            y = geo.get('y', '0')
-            if x not in ('0', '0.0', None) or y not in ('0', '0.0', None):
-                non_zero_coords.append(c.get('id', '?'))
-    if non_zero_coords:
+        if c.get('vertex') == '1' and c.get('id') not in ('0', '1'):
+            geo = c.find('mxGeometry')
+            if geo is not None:
+                x = geo.get('x', '0')
+                y = geo.get('y', '0')
+                if x in ('0', '0.0', None) and y in ('0', '0.0', None):
+                    zero_coord_vertices.append(c.get('id', '?'))
+                else:
+                    placed_vertices.append(c.get('id', '?'))
+    if zero_coord_vertices and not placed_vertices:
         warnings.append(
-            f"NON-ZERO coordinates on {len(non_zero_coords)} vertex/vertices "
-            f"(postLayout handles this — only a warning if intentional): "
-            f"{', '.join(non_zero_coords[:5])}{'...' if len(non_zero_coords) > 5 else ''}"
+            f"ALL {len(zero_coord_vertices)} vertices are at x=0,y=0 — they will overlap. "
+            f"Use the column-grid coordinates from SKILL.md instead."
+        )
+    elif zero_coord_vertices and len(zero_coord_vertices) > len(placed_vertices):
+        warnings.append(
+            f"{len(zero_coord_vertices)} of {len(zero_coord_vertices) + len(placed_vertices)} "
+            f"vertices are at x=0,y=0 — they will overlap each other. "
+            f"Apply column-grid coordinates to all nodes."
         )
 
     # --- Warnings: large diagram ---

@@ -22,10 +22,11 @@ file — not an image.
 
 ## Core Design Principle
 
-Claude is responsible for topology and shape identity. draw.io's layout engine
-is responsible for positioning. Never attempt to compute or assign meaningful
-x/y coordinates — that is not your job and you will do it badly. Place every
-vertex at x="0" y="0" and let postLayout handle everything.
+Claude is responsible for topology, shape identity, and rough placement. Assign
+non-overlapping x/y coordinates using the column-grid in Step 4. Never place all
+vertices at x="0" y="0" — they will stack on top of each other and render as an
+unreadable pile. draw.io's **Arrange → Layout** function refines exact positioning
+after the file opens.
 
 ---
 
@@ -92,8 +93,7 @@ Every diagram MUST begin with this exact skeleton:
     <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10"
       guides="1" tooltips="1" connect="1" arrows="1" fold="1"
       page="0" pageScale="1" pageWidth="1169" pageHeight="827"
-      math="0" shadow="0"
-      postLayout="LAYOUT_DIRECTIVE">
+      math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -103,20 +103,35 @@ Every diagram MUST begin with this exact skeleton:
 </mxfile>
 ```
 
-Replace `LAYOUT_DIRECTIVE` with the appropriate value:
+### Column-grid coordinate reference
 
-| Diagram type | postLayout value |
+Assign x/y from this grid. Tiers run left-to-right; services stack top-to-bottom
+within each tier. Adjust column spacing if the diagram is wider than average.
+
+| Tier | x |
 |---|---|
-| Three-tier web / standard architecture | `verticalHierarchical` |
-| Pipeline / data flow (left to right) | `horizontalHierarchical` |
-| Org chart / account hierarchy | `tree` |
-| Complex mesh with many peers | `stress` |
+| External / Internet / Users | 100 |
+| Entry (IGW, ALB, CloudFront, API GW) | 350 |
+| App / Compute (EC2, Lambda, ECS, EKS) | 600 |
+| Data (RDS, DynamoDB, ElastiCache, S3) | 850 |
+| Auxiliary (SQS, SNS, Secrets Manager, etc.) | 1100 |
+
+**Row spacing:** first service in a tier at y=120; increment y by 150 for each
+additional service in the same tier.
+
+**Children inside containers** (icons inside a VPC, subnet, or AZ) use coordinates
+relative to the container, not the canvas. Place the first child at x=40, y=60
+and increment by 110 horizontally or 120 vertically within the container.
+
+**Container sizing:** size each container to encompass all its children plus 40px
+padding on every side. Containers at the root level use absolute x/y from the
+grid; nested containers use parent-relative coordinates.
 
 ### Vertex placement rules
 
-- ALL vertices: `x="0" y="0"` — do not change this
 - Service icons: `width="78" height="78"` (standard AWS icon size)
-- Container cells (VPC, subnet, AZ): `width="400" height="300"` at `x="0" y="0"`
+- Container cells (VPC, subnet, AZ): size to frame their children with 40px padding
+- Use the column-grid above for x/y — coordinates must be non-overlapping
 - Labels: use the `value` attribute; keep under 30 characters
 - Font: `fontSize=11;fontStyle=1` for primary labels (bold)
 
@@ -135,7 +150,7 @@ from memory.
     strokeColor=#8C4FFF;fillColor=#F4ECFF;verticalAlign=top;align=center;
     spacingTop=25;fontColor=#8C4FFF;dashed=0;fontSize=12;"
   vertex="1" parent="1">
-  <mxGeometry x="0" y="0" width="400" height="300" as="geometry"/>
+  <mxGeometry x="200" y="50" width="700" height="500" as="geometry"/>
 </mxCell>
 ```
 
@@ -148,7 +163,7 @@ from memory.
     strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=center;
     spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
   vertex="1" parent="vpc1">
-  <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
+  <mxGeometry x="40" y="60" width="280" height="380" as="geometry"/>
 </mxCell>
 ```
 
@@ -161,7 +176,7 @@ from memory.
     strokeColor=#147EBA;fillColor=#EBF5FB;verticalAlign=top;align=center;
     spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
   vertex="1" parent="vpc1">
-  <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
+  <mxGeometry x="380" y="60" width="280" height="380" as="geometry"/>
 </mxCell>
 ```
 
@@ -174,7 +189,7 @@ from memory.
     strokeColor=#147EBA;fillColor=none;verticalAlign=top;align=center;
     spacingTop=25;fontColor=#147EBA;dashed=1;fontSize=11;"
   vertex="1" parent="vpc1">
-  <mxGeometry x="0" y="0" width="350" height="250" as="geometry"/>
+  <mxGeometry x="40" y="60" width="620" height="380" as="geometry"/>
 </mxCell>
 ```
 
@@ -187,7 +202,7 @@ from memory.
     strokeColor=#232F3E;fillColor=#FAFAFA;verticalAlign=top;align=center;
     spacingTop=25;fontColor=#232F3E;dashed=1;fontSize=12;"
   vertex="1" parent="1">
-  <mxGeometry x="0" y="0" width="700" height="500" as="geometry"/>
+  <mxGeometry x="150" y="30" width="900" height="650" as="geometry"/>
 </mxCell>
 ```
 
@@ -208,7 +223,7 @@ from memory.
   style="rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;
     exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;"
   ```
-- NEVER add `<Array as="points">` waypoints. postLayout routes edges automatically.
+- Avoid `<Array as="points">` waypoints — manual routing is rarely needed and clutters the XML.
 
 ### ID assignment rules
 
@@ -223,12 +238,12 @@ from memory.
 The following will cause the file to fail or look broken:
 
 - XML comments (`<!-- -->`) — forbidden entirely; they waste tokens and can cause parse errors
-- Coordinates other than `x="0" y="0"` for vertices
 - `<Array as="points">` waypoints on edges
 - `id="0"` or `id="1"` used for anything other than the two foundation cells
 - Any `mxCell` without a `parent` attribute
 - Duplicate IDs anywhere in the file
 - Base64-compressed diagram content — use raw XML only
+- `postLayout` attribute on `mxGraphModel` — draw.io desktop silently ignores it; use explicit x/y coordinates instead
 
 ---
 
@@ -252,7 +267,7 @@ wherever they specify. Tell the user:
 - File name and location
 - How many nodes/containers the diagram contains
 - Any services you assumed or inferred (so they can correct them)
-- draw.io will run auto-layout on first open — this is expected and correct
+- To refine positioning: open in draw.io, then use **Arrange → Layout** for a cleaner result
 
 ---
 
