@@ -159,7 +159,7 @@ from memory.
 <mxCell id="subnet-pub1" value="Public Subnet"
   style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],
     [1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];
-    shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_public_subnet;
+    shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_subnet;
     strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=center;
     spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
   vertex="1" parent="vpc1">
@@ -172,7 +172,7 @@ from memory.
 <mxCell id="subnet-prv1" value="Private Subnet"
   style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],
     [1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];
-    shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_private_subnet;
+    shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_subnet;
     strokeColor=#147EBA;fillColor=#EBF5FB;verticalAlign=top;align=center;
     spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
   vertex="1" parent="vpc1">

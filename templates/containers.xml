@@ -11,7 +11,7 @@
 
   <template name="public-subnet" description="Public subnet inside a VPC (parent must be vpc cell id)">
     <mxCell id="subnet-pub1" value="Public Subnet"
-      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_public_subnet;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_subnet;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
       vertex="1" parent="vpc1">
       <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
     </mxCell>
@@ -19,7 +19,7 @@
 
   <template name="private-subnet" description="Private subnet inside a VPC (parent must be vpc cell id)">
     <mxCell id="subnet-prv1" value="Private Subnet"
-      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_private_subnet;strokeColor=#147EBA;fillColor=#EBF5FB;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_subnet;strokeColor=#147EBA;fillColor=#EBF5FB;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
       vertex="1" parent="vpc1">
       <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
     </mxCell>
@@ -27,7 +27,7 @@
 
   <template name="isolated-subnet" description="Isolated/DB subnet inside a VPC (parent must be vpc cell id)">
     <mxCell id="subnet-iso1" value="Isolated Subnet"
-      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_private_subnet;strokeColor=#147EBA;fillColor=#F5F5F5;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=1;fontSize=11;"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_subnet;strokeColor=#147EBA;fillColor=#F5F5F5;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=1;fontSize=11;"
       vertex="1" parent="vpc1">
       <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
     </mxCell>
@@ -59,7 +59,7 @@
 
   <template name="eks-cluster" description="EKS Cluster container (parent can be subnet or vpc id)">
     <mxCell id="eks-cluster1" value="EKS Cluster"
-      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_eks_cluster;strokeColor=#E9822C;fillColor=#FEF4EA;verticalAlign=top;align=center;spacingTop=25;fontColor=#E9822C;dashed=0;fontSize=11;"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;strokeColor=#E9822C;fillColor=#FEF4EA;verticalAlign=top;align=center;spacingTop=25;fontColor=#E9822C;dashed=0;fontSize=11;"
       vertex="1" parent="1">
       <mxGeometry x="0" y="0" width="500" height="350" as="geometry"/>
     </mxCell>
