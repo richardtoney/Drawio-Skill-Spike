@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<containers>
+
+  <template name="vpc" description="AWS VPC boundary container">
+    <mxCell id="vpc1" value="VPC (10.0.0.0/16)"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc;strokeColor=#8C4FFF;fillColor=#F4ECFF;verticalAlign=top;align=center;spacingTop=25;fontColor=#8C4FFF;dashed=0;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="0" y="0" width="400" height="300" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="public-subnet" description="Public subnet inside a VPC (parent must be vpc cell id)">
+    <mxCell id="subnet-pub1" value="Public Subnet"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_public_subnet;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
+      vertex="1" parent="vpc1">
+      <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="private-subnet" description="Private subnet inside a VPC (parent must be vpc cell id)">
+    <mxCell id="subnet-prv1" value="Private Subnet"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_private_subnet;strokeColor=#147EBA;fillColor=#EBF5FB;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=0;fontSize=11;"
+      vertex="1" parent="vpc1">
+      <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="isolated-subnet" description="Isolated/DB subnet inside a VPC (parent must be vpc cell id)">
+    <mxCell id="subnet-iso1" value="Isolated Subnet"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_private_subnet;strokeColor=#147EBA;fillColor=#F5F5F5;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=1;fontSize=11;"
+      vertex="1" parent="vpc1">
+      <mxGeometry x="0" y="0" width="180" height="150" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="availability-zone" description="Availability Zone container inside a VPC (parent must be vpc cell id)">
+    <mxCell id="az1" value="Availability Zone 1"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_availability_zone;strokeColor=#147EBA;fillColor=none;verticalAlign=top;align=center;spacingTop=25;fontColor=#147EBA;dashed=1;fontSize=11;"
+      vertex="1" parent="vpc1">
+      <mxGeometry x="0" y="0" width="350" height="250" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="region" description="AWS Region boundary container (parent=1)">
+    <mxCell id="region1" value="us-east-1"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;strokeColor=#232F3E;fillColor=#FAFAFA;verticalAlign=top;align=center;spacingTop=25;fontColor=#232F3E;dashed=1;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="0" y="0" width="700" height="500" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="aws-account" description="AWS Account boundary container (parent=1)">
+    <mxCell id="account1" value="AWS Account"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;strokeColor=#CD2264;fillColor=#F9EEF3;verticalAlign=top;align=center;spacingTop=25;fontColor=#CD2264;dashed=0;fontSize=12;"
+      vertex="1" parent="1">
+      <mxGeometry x="0" y="0" width="800" height="600" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="eks-cluster" description="EKS Cluster container (parent can be subnet or vpc id)">
+    <mxCell id="eks-cluster1" value="EKS Cluster"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_eks_cluster;strokeColor=#E9822C;fillColor=#FEF4EA;verticalAlign=top;align=center;spacingTop=25;fontColor=#E9822C;dashed=0;fontSize=11;"
+      vertex="1" parent="1">
+      <mxGeometry x="0" y="0" width="500" height="350" as="geometry"/>
+    </mxCell>
+  </template>
+
+  <template name="auto-scaling-group" description="Auto Scaling Group container">
+    <mxCell id="asg1" value="Auto Scaling Group"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_auto_scaling_group;strokeColor=#E9822C;fillColor=#FEF4EA;verticalAlign=top;align=center;spacingTop=25;fontColor=#E9822C;dashed=1;fontSize=11;"
+      vertex="1" parent="1">
+      <mxGeometry x="0" y="0" width="300" height="200" as="geometry"/>
+    </mxCell>
+  </template>
+
+</containers>
