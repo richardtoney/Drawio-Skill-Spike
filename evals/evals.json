@@ -5,16 +5,15 @@
       "id": 1,
       "name": "three-tier-web",
       "prompt": "Create a draw.io architecture diagram for a standard three-tier web application on AWS. It runs in us-east-1, has two AZs, an ALB in public subnets routing to EC2 app servers in private subnets, and an RDS Multi-AZ database in isolated subnets. Add CloudFront in front of the ALB and Route53 for DNS.",
-      "expected_output": "Valid .drawio file with CloudFront, Route53, ALB, 2x EC2, RDS Multi-AZ, correct VPC/subnet containers, postLayout set to verticalHierarchical, all services using mxgraph.aws4 shapes",
+      "expected_output": "Valid .drawio file with CloudFront, Route53, ALB, 2x EC2, RDS Multi-AZ, correct VPC/subnet containers, explicit column-grid x/y coordinates, all services using mxgraph.aws4 shapes",
       "assertions": [
         { "id": "valid-xml", "description": "File opens without error", "check": "run validate_drawio.py and exit code is 0" },
         { "id": "has-foundation-cells", "description": "mxCell id=0 and id=1 are present", "check": "grep for id=\"0\" and id=\"1\"" },
         { "id": "uses-aws4-shapes", "description": "All service shapes use mxgraph.aws4 namespace", "check": "all shape= values contain 'mxgraph.aws4'" },
-        { "id": "has-postlayout", "description": "mxGraphModel has postLayout attribute set", "check": "postLayout attribute present on mxGraphModel element" },
         { "id": "no-xml-comments", "description": "No XML comments in file", "check": "<!-- not present anywhere in file" },
         { "id": "required-services-present", "description": "CloudFront, Route53, ALB, EC2, RDS all appear as vertices", "check": "grep for each service name in value attributes" },
         { "id": "has-vpc-container", "description": "VPC group container present", "check": "mxgraph.aws4.group with grIcon=mxgraph.aws4.group_vpc present" },
-        { "id": "has-subnet-containers", "description": "Public and private subnet containers present", "check": "group_public_subnet and group_private_subnet grIcons present" },
+        { "id": "has-subnet-containers", "description": "Public and private subnet containers present", "check": "group_subnet grIcon present (both public and private subnets use group_subnet)" },
         { "id": "has-az-containers", "description": "Two AZ containers present", "check": "two mxCells with group_availability_zone grIcon present" },
         { "id": "edges-not-orphaned", "description": "All edge source/target IDs exist as vertices", "check": "validate_drawio.py reports 0 orphaned references" }
       ]
@@ -23,10 +22,9 @@
       "id": 2,
       "name": "serverless-api",
       "prompt": "Diagram a serverless API on AWS: Route53 → API Gateway → Lambda → DynamoDB, with S3 for static assets served via CloudFront, and Cognito for auth. Keep it simple, no VPC needed.",
-      "expected_output": "Valid .drawio file with 7 services, correct mxgraph.aws4 shapes, no VPC containers (serverless), postLayout set, edges showing request flow with labels",
+      "expected_output": "Valid .drawio file with 7 services, correct mxgraph.aws4 shapes, no VPC containers (serverless), explicit column-grid x/y coordinates, edges showing request flow with labels",
       "assertions": [
         { "id": "valid-xml", "description": "File opens without error", "check": "run validate_drawio.py and exit code is 0" },
-        { "id": "has-postlayout", "description": "mxGraphModel has postLayout attribute set", "check": "postLayout attribute present" },
         { "id": "uses-aws4-shapes", "description": "All service shapes use mxgraph.aws4 namespace", "check": "all shape= values contain 'mxgraph.aws4'" },
         { "id": "required-services-present", "description": "Route53, API Gateway, Lambda, DynamoDB, S3, CloudFront, Cognito all present", "check": "grep for each service name" },
         { "id": "no-vpc-containers", "description": "No VPC group containers", "check": "group_vpc grIcon NOT present" },
@@ -42,7 +40,6 @@
       "expected_output": "Valid .drawio file with EKS group container, 3 AZs, correct node placement, CI/CD path shown separately, 10+ service nodes",
       "assertions": [
         { "id": "valid-xml", "description": "File opens without error", "check": "validate_drawio.py exits 0" },
-        { "id": "has-postlayout", "description": "postLayout set", "check": "postLayout attribute present" },
         { "id": "uses-aws4-shapes", "description": "All shapes use mxgraph.aws4", "check": "all shape= contain 'mxgraph.aws4'" },
         { "id": "required-services-present", "description": "EKS, ECR, RDS, ElastiCache, MSK, ALB, CodePipeline, CodeBuild present", "check": "grep for each service" },
         { "id": "has-three-azs", "description": "Three AZ containers present", "check": "three group_availability_zone cells" },
@@ -54,10 +51,9 @@
       "id": 4,
       "name": "data-pipeline",
       "prompt": "Draw an AWS data pipeline: Kinesis Data Streams ingesting from IoT devices, Lambda processing function, S3 data lake, Glue crawlers and jobs, Athena for queries, and QuickSight for visualization. Add CloudWatch for monitoring.",
-      "expected_output": "Valid .drawio file with left-to-right flow, horizontalHierarchical postLayout, correct service shapes, data flow arrows",
+      "expected_output": "Valid .drawio file with left-to-right flow using LR column-grid coordinates, correct service shapes, data flow arrows",
       "assertions": [
         { "id": "valid-xml", "description": "File opens without error", "check": "validate_drawio.py exits 0" },
-        { "id": "has-horizontal-layout", "description": "postLayout=horizontalHierarchical", "check": "postLayout='horizontalHierarchical'" },
         { "id": "uses-aws4-shapes", "description": "All shapes use mxgraph.aws4", "check": "all shape= contain 'mxgraph.aws4'" },
         { "id": "required-services-present", "description": "Kinesis, Lambda, S3, Glue, Athena, CloudWatch present", "check": "grep for each service" },
         { "id": "has-directional-edges", "description": "Edges show data flow", "check": "edge cells with source and target" },
@@ -72,7 +68,6 @@
       "expected_output": "Valid .drawio file with account boundary containers, Transit Gateway as hub, correct account grouping",
       "assertions": [
         { "id": "valid-xml", "description": "File opens without error", "check": "validate_drawio.py exits 0" },
-        { "id": "has-postlayout", "description": "postLayout set", "check": "postLayout attribute present" },
         { "id": "uses-aws4-shapes", "description": "All shapes use mxgraph.aws4", "check": "all shape= contain 'mxgraph.aws4'" },
         { "id": "has-account-containers", "description": "Account containers present", "check": "group_account grIcon present, 3+ instances" },
         { "id": "required-services-present", "description": "Organizations, Control Tower, GuardDuty, Transit Gateway, Directory Service present", "check": "grep for each" },
@@ -87,7 +82,6 @@
       "expected_output": "Valid .drawio file with Bedrock shape (mxgraph.aws4.bedrock), correct data flow, all 7 services present",
       "assertions": [
         { "id": "valid-xml", "description": "File opens without error", "check": "validate_drawio.py exits 0" },
-        { "id": "has-postlayout", "description": "postLayout set", "check": "postLayout attribute present" },
         { "id": "uses-aws4-shapes", "description": "All shapes use mxgraph.aws4", "check": "all shape= contain 'mxgraph.aws4'" },
         { "id": "has-bedrock-shape", "description": "Bedrock uses mxgraph.aws4.bedrock", "check": "shape=mxgraph.aws4.bedrock present" },
         { "id": "required-services-present", "description": "API Gateway, Lambda, OpenSearch, Bedrock, ElastiCache, DynamoDB present", "check": "grep for each" },

@@ -239,6 +239,11 @@ shape=mxgraph.aws4.athena;fillColor=#C7131F;strokeColor=#ffffff;fontColor=#fffff
 shape=mxgraph.aws4.kinesis_data_firehose;fillColor=#E7157B;strokeColor=#ffffff;fontColor=#ffffff;labelPosition=bottom;verticalLabelPosition=top;verticalAlign=top;align=center;sketch=0;aspect=fixed;
 ```
 
+### QuickSight
+```
+shape=mxgraph.aws4.quicksight;fillColor=#C7131F;strokeColor=#ffffff;fontColor=#ffffff;labelPosition=bottom;verticalLabelPosition=top;verticalAlign=top;align=center;sketch=0;aspect=fixed;
+```
+
 ---
 
 ## Developer Tools
