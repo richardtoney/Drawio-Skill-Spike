@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="" agent="Claude Code drawio-aws skill" version="24.0.0" type="device">
+  <diagram name="BDD Drone System" id="diagram-drone-bdd">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" /><mxCell id="1" parent="0" />
+
+        <mxCell id="frame" value="bdd [Package] DroneSystem [Drone Structure]"
+          style="shape=mxgraph.sysml.package;html=1;overflow=fill;whiteSpace=wrap;fillColor=none;gradientColor=none;fontSize=12;fontStyle=1;align=left;spacingLeft=10;strokeColor=#000000;strokeWidth=2;verticalAlign=top;spacingTop=6;"
+          vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="1200" height="560" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="drone" value="&lt;b&gt;&laquo;block&raquo;&lt;/b&gt;&lt;br&gt;&lt;b&gt;DroneSystem&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="270" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="drone-pl" value="parts" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="drone">
+          <mxGeometry y="40" width="270" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="drone-pc" value="+ flightCtrl : FlightController&#xa;+ motor : Motor [4]&#xa;+ battery : Battery&#xa;+ frame : Frame"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="drone">
+          <mxGeometry y="54" width="270" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="drone-s1" value="" style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;" vertex="1" parent="drone">
+          <mxGeometry y="126" width="270" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="drone-vl" value="values" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="drone">
+          <mxGeometry y="134" width="270" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="drone-vc" value="+ maxAltitude : Real&#xa;+ maxSpeed : Real&#xa;+ flightTime : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="drone">
+          <mxGeometry y="148" width="270" height="54" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fctrl" value="&lt;b&gt;&laquo;block&raquo;&lt;/b&gt;&lt;br&gt;&lt;b&gt;FlightController&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="380" y="80" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="fctrl-pl" value="parts" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="fctrl">
+          <mxGeometry y="40" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="fctrl-pc" value="+ gps : GPS&#xa;+ imu : IMU"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="fctrl">
+          <mxGeometry y="54" width="250" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="fctrl-s1" value="" style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;" vertex="1" parent="fctrl">
+          <mxGeometry y="90" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="fctrl-vl" value="values" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="fctrl">
+          <mxGeometry y="98" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="fctrl-vc" value="+ updateRate : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="fctrl">
+          <mxGeometry y="112" width="250" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="motor" value="&lt;b&gt;&laquo;block&raquo;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Motor&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="220" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="motor-vl" value="values" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="motor">
+          <mxGeometry y="40" width="220" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="motor-vc" value="+ rpm : Integer&#xa;+ thrustForce : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="motor">
+          <mxGeometry y="54" width="220" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="motor-s1" value="" style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;" vertex="1" parent="motor">
+          <mxGeometry y="90" width="220" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="motor-ol" value="operations" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="motor">
+          <mxGeometry y="98" width="220" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="motor-oc" value="+ setThrottle(level : Real) : void"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="motor">
+          <mxGeometry y="112" width="220" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="battery" value="&lt;b&gt;&laquo;block&raquo;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Battery&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="250" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="bat-vl" value="values" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="battery">
+          <mxGeometry y="40" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="bat-vc" value="+ capacity : Real&#xa;+ voltage : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="battery">
+          <mxGeometry y="54" width="250" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="bat-s1" value="" style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;" vertex="1" parent="battery">
+          <mxGeometry y="90" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="bat-ol" value="operations" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="battery">
+          <mxGeometry y="98" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="bat-oc" value="+ getChargeLevel() : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="battery">
+          <mxGeometry y="112" width="250" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gps" value="&lt;b&gt;&laquo;block&raquo;&lt;/b&gt;&lt;br&gt;&lt;b&gt;GPS&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="380" y="300" width="240" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="gps-vl" value="values" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="gps">
+          <mxGeometry y="40" width="240" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="gps-vc" value="+ latitude : Real&#xa;+ longitude : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="gps">
+          <mxGeometry y="54" width="240" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="imu" value="&lt;b&gt;&laquo;block&raquo;&lt;/b&gt;&lt;br&gt;&lt;b&gt;IMU&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="300" width="240" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="imu-vl" value="values" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="imu">
+          <mxGeometry y="40" width="240" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="imu-vc" value="+ roll : Real&#xa;+ pitch : Real&#xa;+ yaw : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="imu">
+          <mxGeometry y="54" width="240" height="54" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="frame-block" value="&lt;b&gt;&laquo;block&raquo;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Frame&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="960" y="80" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="frame-vl" value="values" style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;" vertex="1" parent="frame-block">
+          <mxGeometry y="40" width="220" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="frame-vc" value="+ material : String&#xa;+ weight : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;" vertex="1" parent="frame-block">
+          <mxGeometry y="54" width="220" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="de1" value="" style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" source="drone" target="fctrl" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="de2" value="[4]" style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="drone" target="motor" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="de3" value="" style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="drone" target="battery" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="de4" value="" style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.15;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="drone" target="frame-block" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="de5" value="" style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="fctrl" target="gps" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="de6" value="" style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" edge="1" source="fctrl" target="imu" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="drone-leg" value="Key:   filled diamond = Composition (at owner)     hollow triangle = Generalization (at supertype)"
+          style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="510" width="900" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

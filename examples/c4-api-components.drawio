@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="" agent="Claude Code drawio-aws skill" version="24.0.0" type="device">
+  <diagram name="3 - API Components" id="page-components">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" /><mxCell id="1" parent="0" />
+
+        <mxCell id="comp-title" value="Component diagram for API Application"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=18;fontStyle=1;fontColor=#000000;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="700" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-spa"
+          value="&lt;b&gt;Single-Page Application&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Container: JavaScript / Angular]&lt;/font&gt;"
+          style="shape=mxgraph.c4.person;fillColor=#438dd5;fontColor=#ffffff;strokeColor=#3c7fc0;whiteSpace=wrap;html=1;align=center;fontSize=12;"
+          vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="160" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-mobile"
+          value="&lt;b&gt;Mobile Application&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Container: Xamarin]&lt;/font&gt;"
+          style="shape=mxgraph.c4.person;fillColor=#438dd5;fontColor=#ffffff;strokeColor=#3c7fc0;whiteSpace=wrap;html=1;align=center;fontSize=12;"
+          vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="160" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-boundary"
+          value="API Application [Container: Java / Spring MVC]"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#cccccc;strokeWidth=2;dashed=1;verticalAlign=top;fontSize=13;fontStyle=1;fontColor=#555555;arcSize=2;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="310" y="110" width="820" height="620" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-signin"
+          value="&lt;b&gt;Sign In Controller&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Component: Spring MVC RestController]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Allows users to sign in to the&lt;br&gt;Internet Banking System.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;fontColor=#000000;strokeColor=#78a8d8;arcSize=6;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="160" width="210" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-accounts"
+          value="&lt;b&gt;Accounts Controller&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Component: Spring MVC RestController]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Provides customers with summary&lt;br&gt;of their bank accounts.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;fontColor=#000000;strokeColor=#78a8d8;arcSize=6;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="600" y="160" width="210" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-payments"
+          value="&lt;b&gt;Payments Controller&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Component: Spring MVC RestController]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Allows customers to make&lt;br&gt;payments.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;fontColor=#000000;strokeColor=#78a8d8;arcSize=6;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="860" y="160" width="210" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-security"
+          value="&lt;b&gt;Security Component&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Component: Spring Bean]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Provides authentication and&lt;br&gt;authorisation functionality.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;fontColor=#000000;strokeColor=#78a8d8;arcSize=6;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="390" width="210" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-email-cmp"
+          value="&lt;b&gt;E-mail Component&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Component: Spring Bean]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Sends e-mails to users using&lt;br&gt;the E-mail System.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;fontColor=#000000;strokeColor=#78a8d8;arcSize=6;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="600" y="390" width="210" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-mainframe-facade"
+          value="&lt;b&gt;Mainframe Facade&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Component: Spring Bean]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Provides access to the Mainframe&lt;br&gt;Banking System via its API.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;fontColor=#000000;strokeColor=#78a8d8;arcSize=6;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="860" y="390" width="210" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-db"
+          value="&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Container: Microsoft SQL Server]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Stores user registration&lt;br&gt;information, auth credentials.&lt;/font&gt;"
+          style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;rounded=0;fillColor=#438dd5;fontColor=#ffffff;strokeColor=#3c7fc0;fontSize=11;align=center;verticalAlign=top;spacingTop=4;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="600" width="210" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-email-sys"
+          value="&lt;b&gt;E-mail System&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Software System]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;External email service.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;strokeColor=#8a8a8a;arcSize=7;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="600" y="600" width="210" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="comp-mf-sys"
+          value="&lt;b&gt;Mainframe Banking System&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Software System]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Stores all core banking data.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;strokeColor=#8a8a8a;arcSize=7;fontSize=11;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="860" y="600" width="210" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ce1" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Makes API calls to [JSON/HTTPS]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="comp-spa" target="comp-signin" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce2" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Makes API calls to [JSON/HTTPS]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" source="comp-spa" target="comp-accounts" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce3" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Makes API calls to [JSON/HTTPS]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="comp-mobile" target="comp-payments" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce4" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Uses&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;" edge="1" source="comp-signin" target="comp-security" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce5" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Uses&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;" edge="1" source="comp-signin" target="comp-email-cmp" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce6" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Uses&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;" edge="1" source="comp-accounts" target="comp-mainframe-facade" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce7" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Uses&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;" edge="1" source="comp-payments" target="comp-mainframe-facade" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce8" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Reads/writes [JDBC]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;" edge="1" source="comp-security" target="comp-db" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce9" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Sends email [SMTP]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;" edge="1" source="comp-email-cmp" target="comp-email-sys" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ce10" value="&lt;font style=&quot;font-size:10px;&quot;&gt;Calls [XML/HTTPS]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;" edge="1" source="comp-mainframe-facade" target="comp-mf-sys" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="comp-leg-title" value="Key:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp-leg-comp" value="Component (internal)" style="rounded=1;whiteSpace=wrap;fillColor=#85bbf0;fontColor=#000000;strokeColor=#78a8d8;arcSize=6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="180" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp-leg-container" value="Container" style="rounded=1;whiteSpace=wrap;fillColor=#438dd5;fontColor=#ffffff;strokeColor=#3c7fc0;arcSize=6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="800" width="130" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="comp-leg-external" value="External Software System" style="rounded=1;whiteSpace=wrap;fillColor=#999999;fontColor=#ffffff;strokeColor=#8a8a8a;arcSize=7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="800" width="180" height="36" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

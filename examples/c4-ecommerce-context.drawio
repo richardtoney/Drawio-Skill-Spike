@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="" agent="Claude Code drawio-aws skill" version="24.0.0" type="device">
+  <diagram name="1 - E-commerce System Context" id="ecomm-context">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" /><mxCell id="1" parent="0" />
+
+        <mxCell id="ec-title" value="System Context diagram for E-commerce Platform"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;fontSize=18;fontStyle=1;fontColor=#000000;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="740" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ec-customer"
+          value="&lt;b&gt;Customer&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Browses and purchases products&lt;br&gt;from the online store.&lt;/font&gt;"
+          style="shape=mxgraph.c4.person;fillColor=#08427b;fontColor=#ffffff;strokeColor=#3c7fc0;whiteSpace=wrap;html=1;align=center;spacingTop=0;fontSize=12;"
+          vertex="1" parent="1">
+          <mxGeometry x="80" y="250" width="160" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ec-admin"
+          value="&lt;b&gt;Store Admin&lt;/b&gt;&lt;br&gt;[Person]&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Manages products, orders,&lt;br&gt;and promotions.&lt;/font&gt;"
+          style="shape=mxgraph.c4.person;fillColor=#08427b;fontColor=#ffffff;strokeColor=#3c7fc0;whiteSpace=wrap;html=1;align=center;spacingTop=0;fontSize=12;"
+          vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="160" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ec-platform"
+          value="&lt;b&gt;E-commerce Platform&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Software System]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Allows customers to browse&lt;br&gt;products, place orders, and&lt;br&gt;make payments online.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;fontColor=#ffffff;strokeColor=#0f5eaa;arcSize=7;fontSize=12;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="420" y="285" width="240" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ec-payment"
+          value="&lt;b&gt;Payment Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Software System]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Processes credit card and&lt;br&gt;digital wallet payments.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;strokeColor=#8a8a8a;arcSize=7;fontSize=12;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="830" y="140" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ec-shipping"
+          value="&lt;b&gt;Shipping API&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Software System]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Calculates shipping costs&lt;br&gt;and tracks deliveries.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;strokeColor=#8a8a8a;arcSize=7;fontSize=12;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="830" y="320" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ec-email"
+          value="&lt;b&gt;E-mail Service&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;[Software System]&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-style:italic;&quot;&gt;Sends order confirmations&lt;br&gt;and marketing emails.&lt;/font&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;strokeColor=#8a8a8a;arcSize=7;fontSize=12;align=center;"
+          vertex="1" parent="1">
+          <mxGeometry x="830" y="500" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ee1" value="&lt;font style=&quot;font-size:11px;&quot;&gt;Browses products, places&lt;br&gt;orders, and pays using&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;" edge="1" source="ec-customer" target="ec-platform" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ee2" value="&lt;font style=&quot;font-size:11px;&quot;&gt;Manages inventory and&lt;br&gt;promotions using&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" edge="1" source="ec-admin" target="ec-platform" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ee3" value="&lt;font style=&quot;font-size:11px;&quot;&gt;Authorises payments&lt;br&gt;[HTTPS/REST]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ec-platform" target="ec-payment" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ee4" value="&lt;font style=&quot;font-size:11px;&quot;&gt;Gets shipping rates and&lt;br&gt;tracking [HTTPS/REST]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ec-platform" target="ec-shipping" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ee5" value="&lt;font style=&quot;font-size:11px;&quot;&gt;Sends notifications&lt;br&gt;[SMTP]&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#707070;strokeWidth=2;fontColor=#707070;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ec-platform" target="ec-email" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ee6" value="&lt;font style=&quot;font-size:11px;&quot;&gt;Receives order&lt;br&gt;confirmations&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#707070;strokeWidth=2;fontColor=#707070;dashed=1;exitX=0;exitY=0.2;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ec-email" target="ec-customer" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="ec-leg-title" value="Key:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="720" width="60" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ec-leg-person" value="Person (internal)" style="rounded=1;whiteSpace=wrap;fillColor=#08427b;fontColor=#ffffff;strokeColor=#3c7fc0;arcSize=7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="150" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="ec-leg-internal" value="Internal Software System" style="rounded=1;whiteSpace=wrap;fillColor=#1168bd;fontColor=#ffffff;strokeColor=#0f5eaa;arcSize=7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="210" y="760" width="170" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="ec-leg-external" value="External Software System" style="rounded=1;whiteSpace=wrap;fillColor=#999999;fontColor=#ffffff;strokeColor=#8a8a8a;arcSize=7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="400" y="760" width="170" height="36" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
