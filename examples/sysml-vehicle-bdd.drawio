@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="" agent="Claude Code drawio-aws skill" version="24.0.0" type="device">
+  <diagram name="BDD Vehicle System" id="diagram-sysml-bdd">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="frame" value="bdd [Package] AutomobileSystem [Vehicle Structure]"
+          style="shape=mxgraph.sysml.package;html=1;overflow=fill;whiteSpace=wrap;fillColor=none;gradientColor=none;fontSize=12;fontStyle=1;align=left;spacingLeft=10;strokeColor=#000000;strokeWidth=2;verticalAlign=top;spacingTop=6;"
+          vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="1200" height="540" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="auto"
+          value="&lt;b&gt;&#171;block&#187;&lt;/b&gt;&lt;br&gt;&lt;b&gt;AutomobileSystem&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="270" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-pl" value="parts"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="auto">
+          <mxGeometry y="40" width="270" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-pc" value="+ powertrain : PowerTrain&#xa;+ wheel : Wheel [4]&#xa;+ body : Body"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="auto">
+          <mxGeometry y="54" width="270" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-s1" value=""
+          style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;"
+          vertex="1" parent="auto">
+          <mxGeometry y="108" width="270" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-vl" value="values"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="auto">
+          <mxGeometry y="116" width="270" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-vc" value="+ maxSpeed : Real&#xa;+ mass : Real&#xa;+ range : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="auto">
+          <mxGeometry y="130" width="270" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-s2" value=""
+          style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;"
+          vertex="1" parent="auto">
+          <mxGeometry y="184" width="270" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-ol" value="operations"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="auto">
+          <mxGeometry y="192" width="270" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="auto-oc" value="+ start() : void&#xa;+ stop() : void&#xa;+ accelerate(speed : Real) : void"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="auto">
+          <mxGeometry y="206" width="270" height="54" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ptrain"
+          value="&lt;b&gt;&#171;block&#187;&lt;/b&gt;&lt;br&gt;&lt;b&gt;PowerTrain&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="380" y="90" width="250" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="ptrain-pl" value="parts"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="ptrain">
+          <mxGeometry y="40" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="ptrain-pc" value="+ engine : Engine&#xa;+ transmission : Transmission&#xa;+ differential : Differential"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="ptrain">
+          <mxGeometry y="54" width="250" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="ptrain-s1" value=""
+          style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;"
+          vertex="1" parent="ptrain">
+          <mxGeometry y="108" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ptrain-vl" value="values"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="ptrain">
+          <mxGeometry y="116" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="ptrain-vc" value="+ maxTorque : Real&#xa;+ efficiency : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="ptrain">
+          <mxGeometry y="130" width="250" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="engine"
+          value="&lt;b&gt;&#171;block&#187;&lt;/b&gt;&lt;br&gt;&lt;i&gt;Engine&lt;/i&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="700" y="90" width="240" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="engine-vl" value="values"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="engine">
+          <mxGeometry y="40" width="240" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="engine-vc" value="+ displacement : Real&#xa;+ horsepower : Integer"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="engine">
+          <mxGeometry y="54" width="240" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="engine-s1" value=""
+          style="line;strokeWidth=1;fillColor=none;rotatable=0;strokeColor=#6c8ebf;"
+          vertex="1" parent="engine">
+          <mxGeometry y="90" width="240" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="engine-ol" value="operations"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="engine">
+          <mxGeometry y="98" width="240" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="engine-oc" value="+ start() : void&#xa;+ stop() : void&#xa;+ getOutputPower() : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="engine">
+          <mxGeometry y="112" width="240" height="54" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="trans"
+          value="&lt;b&gt;&#171;block&#187;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Transmission&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="380" y="290" width="250" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="trans-vl" value="values"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="trans">
+          <mxGeometry y="40" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="trans-vc" value="+ numberOfGears : Integer&#xa;+ type : String"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="trans">
+          <mxGeometry y="54" width="250" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="four-cyl"
+          value="&lt;b&gt;&#171;block&#187;&lt;/b&gt;&lt;br&gt;&lt;b&gt;FourCylinderEngine&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="290" width="240" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="four-vl" value="values"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="four-cyl">
+          <mxGeometry y="40" width="240" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="four-vc" value="+ turboCharged : Boolean"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="four-cyl">
+          <mxGeometry y="54" width="240" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="six-cyl"
+          value="&lt;b&gt;&#171;block&#187;&lt;/b&gt;&lt;br&gt;&lt;b&gt;SixCylinderEngine&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="930" y="290" width="240" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="six-vl" value="values"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="six-cyl">
+          <mxGeometry y="40" width="240" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="six-vc" value="+ vConfiguration : Boolean"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="six-cyl">
+          <mxGeometry y="54" width="240" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wheel"
+          value="&lt;b&gt;&#171;block&#187;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Wheel&lt;/b&gt;"
+          style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=1;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;html=1;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="380" width="250" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="wheel-vl" value="values"
+          style="text;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontStyle=1;"
+          vertex="1" parent="wheel">
+          <mxGeometry y="40" width="250" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="wheel-vc" value="+ diameter : Real&#xa;+ width : Real"
+          style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;"
+          vertex="1" parent="wheel">
+          <mxGeometry y="54" width="250" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" value=""
+          style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;"
+          edge="1" source="auto" target="ptrain" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="[4]"
+          style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.35;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;align=right;"
+          edge="1" source="auto" target="wheel" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" value=""
+          style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;"
+          edge="1" source="ptrain" target="engine" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" value=""
+          style="startArrow=diamondThin;startFill=1;startSize=20;endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;"
+          edge="1" source="ptrain" target="trans" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" value=""
+          style="endArrow=block;endSize=16;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=0.3;entryY=1;entryDx=0;entryDy=0;"
+          edge="1" source="four-cyl" target="engine" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" value=""
+          style="endArrow=block;endSize=16;endFill=0;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.7;entryY=1;entryDx=0;entryDy=0;"
+          edge="1" source="six-cyl" target="engine" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="leg" value="Key:   filled diamond = Composition (at owner)     hollow triangle = Generalization (at supertype)"
+          style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontStyle=2;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="500" width="900" height="20" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
