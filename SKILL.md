@@ -22,11 +22,15 @@ file — not an image.
 
 ## Core Design Principle
 
-Claude is responsible for topology, shape identity, and rough placement. Assign
-non-overlapping x/y coordinates using the column-grid in Step 4. Never place all
-vertices at x="0" y="0" — they will stack on top of each other and render as an
-unreadable pile. draw.io's **Arrange → Layout** function refines exact positioning
-after the file opens.
+Claude is responsible for topology and shape identity. The **layout engine**
+(`engine/layout.py`) is responsible for exact sizing and positioning — it runs
+after XML generation and rewrites all coordinates automatically.
+
+Your job in Step 4 is to get the topology right: correct parent/child nesting,
+correct shape styles, correct edges. Assign rough x/y only at the root level
+(root-level containers and nodes that sit outside the main container) so the
+layout engine can classify them into zones (left / right / top / bottom of the
+main container). Children inside containers may all be placed at x="0" y="0".
 
 ---
 
@@ -106,6 +110,8 @@ Every diagram MUST begin with this exact skeleton:
 </mxfile>
 ```
 
+Do NOT add `postLayout` to `mxGraphModel` — draw.io desktop silently ignores it.
+
 ### Minimal reference example
 
 A correct 3-node diagram to use as a structural reference. Every real diagram
@@ -181,8 +187,11 @@ grid; nested containers use parent-relative coordinates.
 ### Vertex placement rules
 
 - Service icons: `width="78" height="78"` (standard AWS icon size)
-- Container cells (VPC, subnet, AZ): size to frame their children with 40px padding
-- Use the column-grid above for x/y — coordinates must be non-overlapping
+- Container cells (VPC, subnet, AZ): use any plausible starting size — the layout
+  engine resizes them from their children
+- **Children inside containers**: `x="0" y="0"` — the layout engine computes positions
+- **Root-level nodes** (outside the main container): use the column-grid x/y below
+  so the layout engine can classify them correctly into left/right/top/bottom zones
 - Labels: use the `value` attribute; keep under 30 characters
 - Font: `fontSize=11;fontStyle=1` for primary labels (bold)
 
@@ -329,13 +338,33 @@ The following will cause the file to fail or look broken:
 - Any `mxCell` without a `parent` attribute
 - Duplicate IDs anywhere in the file
 - Base64-compressed diagram content — use raw XML only
-- `postLayout` attribute on `mxGraphModel` — draw.io desktop silently ignores it; use explicit x/y coordinates instead
+- `postLayout` attribute on `mxGraphModel` — silently ignored by draw.io desktop
 
 ---
 
-## Step 5: Validate Before Delivering
+## Step 5: Apply Layout Engine
 
-After generating the XML, run the validation script:
+Run the layout engine to compute correct x/y coordinates for all nodes. This
+step is **mandatory for any diagram with containers** (VPCs, AZs, subnets).
+
+```bash
+python ~/.claude/skills/drawio-aws/engine/layout.py output.drawio
+```
+
+The engine runs three passes:
+1. **Bottom-up sizing** — computes each container's width/height from its children
+2. **Top-down placement** — assigns x/y to each child within its container
+3. **Root arrangement** — places root-level nodes around the main container
+   (classifies by original x/y into top / right / bottom / left zones)
+
+If the diagram has no containers (simple flat layout), the column-grid
+coordinates from Step 4 are sufficient and this step may be skipped.
+
+---
+
+## Step 6: Validate Before Delivering
+
+After applying the layout engine, run the validation script:
 
 ```bash
 python ~/.claude/skills/drawio-aws/scripts/validate_drawio.py output.drawio
@@ -346,14 +375,14 @@ the file to the user. Self-correction is expected — do not deliver an invalid 
 
 ---
 
-## Step 6: Deliver
+## Step 7: Deliver
 
 Save the file as `<diagram-name>.drawio` in the user's working directory or
 wherever they specify. Tell the user:
 - File name and location
 - How many nodes/containers the diagram contains
 - Any services you assumed or inferred (so they can correct them)
-- To refine positioning: open in draw.io, then use **Arrange → Layout** for a cleaner result
+- The file opens directly in draw.io with correctly positioned nodes
 
 ---
 
