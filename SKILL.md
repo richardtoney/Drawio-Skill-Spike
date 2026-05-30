@@ -186,6 +186,41 @@ grid; nested containers use parent-relative coordinates.
 - Labels: use the `value` attribute; keep under 30 characters
 - Font: `fontSize=11;fontStyle=1` for primary labels (bold)
 
+### Cross-AZ service placement
+
+Some services logically span multiple Availability Zones and must NOT be placed
+inside any specific AZ or subnet. Parent them to the **VPC** instead, and
+position them between the AZ columns.
+
+**Services that span AZs:** ALB, NLB, RDS Multi-AZ (primary node), ECS Cluster icon
+
+**Rule:** If a service appears between two AZ columns in the architecture, set
+`parent="vpc1"` (or the VPC cell ID) and position it at the horizontal midpoint
+between the two AZ containers.
+
+**Example** — ALB between AZ1 (x=40, width=480) and AZ2 (x=580):
+```xml
+<mxCell id="alb" value="ALB"
+  style="shape=mxgraph.aws4.application_load_balancer;fillColor=#8C4FFF;..."
+  vertex="1" parent="vpc1">
+  <mxGeometry x="511" y="280" width="78" height="78" as="geometry"/>
+</mxCell>
+```
+Here x=511 centres the 78px icon in the 60px gap between the two AZs (AZ1 ends
+at 520, AZ2 starts at 580; midpoint = 550; icon centre at 550, so x = 550 - 39 = 511).
+
+### Internet vs Internet Gateway — critical distinction
+
+These are two different things with different shapes:
+
+| Node | When to use | Shape |
+|---|---|---|
+| **Internet** (cloud) | Generic external internet entry point at the top of the diagram | `shape=cloud` (see `references/aws_shapes.md`) |
+| **Internet Gateway** | The actual AWS VPC IGW resource inside a VPC | `shape=mxgraph.aws4.internet_gateway` |
+
+Never use `mxgraph.aws4.internet_gateway` for the generic "Internet" cloud node —
+it renders as the VPC plug/gateway icon, not a cloud.
+
 ### Container cells (VPC, Subnet, AZ, Region)
 
 Copy the appropriate template from `templates/containers.xml`. The container

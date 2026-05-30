@@ -80,13 +80,18 @@ def validate_diagram(diagram_el, errors, warnings):
         )
 
     # --- AWS4 shape compliance ---
+    ALLOWED_NON_AWS4 = {'cloud', 'mxgraph.network.cloud'}
     non_aws4 = []
     for c in cells:
         style = c.get('style', '')
         if c.get('vertex') == '1' and c.get('id') not in ('0', '1'):
             if 'shape=' in style and 'mxgraph.aws4' not in style:
                 if 'group' not in style:
-                    non_aws4.append(c.get('id', '?'))
+                    shape_val = next(
+                        (p[6:] for p in style.split(';') if p.startswith('shape=')), ''
+                    )
+                    if shape_val not in ALLOWED_NON_AWS4:
+                        non_aws4.append(c.get('id', '?'))
     if non_aws4:
         errors.append(
             f"{prefix}NON-AWS4 shapes found on {len(non_aws4)} vertex/vertices — "

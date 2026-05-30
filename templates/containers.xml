@@ -57,6 +57,14 @@
     </mxCell>
   </template>
 
+  <template name="ecs-cluster" description="ECS Cluster container — parent to the VPC (spans AZs). Place to the left of the AZ columns.">
+    <mxCell id="ecs-cluster1" value="ECS Cluster"
+      style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_ecs;strokeColor=#E9822C;fillColor=#FEF4EA;verticalAlign=top;align=center;spacingTop=25;fontColor=#E9822C;dashed=0;fontSize=11;"
+      vertex="1" parent="vpc1">
+      <mxGeometry x="0" y="0" width="500" height="350" as="geometry"/>
+    </mxCell>
+  </template>
+
   <template name="eks-cluster" description="EKS Cluster container (parent can be subnet or vpc id)">
     <mxCell id="eks-cluster1" value="EKS Cluster"
       style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;strokeColor=#E9822C;fillColor=#FEF4EA;verticalAlign=top;align=center;spacingTop=25;fontColor=#E9822C;dashed=0;fontSize=11;"
