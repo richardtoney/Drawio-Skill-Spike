@@ -88,9 +88,9 @@ def validate_diagram(diagram_el, errors, warnings):
                 if 'group' not in style:
                     non_aws4.append(c.get('id', '?'))
     if non_aws4:
-        warnings.append(
+        errors.append(
             f"{prefix}NON-AWS4 shapes found on {len(non_aws4)} vertex/vertices — "
-            f"should use mxgraph.aws4 namespace: "
+            f"must use mxgraph.aws4 namespace (check references/aws_shapes.md): "
             f"{', '.join(non_aws4[:5])}{'...' if len(non_aws4) > 5 else ''}"
         )
 
@@ -108,6 +108,15 @@ def validate(path: str) -> bool:
         return False
 
     root = tree.getroot()
+
+    # --- Root element check ---
+    if root.tag != 'mxfile':
+        print(
+            f"VALIDATION FAILED — 1 error(s), 0 warning(s):\n"
+            f"  ERROR: WRONG ROOT ELEMENT: expected <mxfile>, got <{root.tag}>. "
+            f"Diagram must be wrapped in <mxfile>."
+        )
+        return False
 
     # --- File-level: raw string checks ---
     with open(path, 'r', encoding='utf-8') as f:
@@ -131,8 +140,7 @@ def validate(path: str) -> bool:
     # --- Per-diagram structural checks ---
     diagrams = root.findall('diagram')
     if not diagrams:
-        # Single-diagram files may omit the <diagram> wrapper; treat root as one page
-        diagrams = [root]
+        errors.append("MISSING <diagram> element inside <mxfile>")
 
     total_cells = 0
     total_vertices = 0
@@ -141,7 +149,7 @@ def validate(path: str) -> bool:
         total_vertices += v
         total_cells += c
 
-    page_count = len(diagrams)
+    page_count = len(diagrams) or 1
 
     # --- Report ---
     if errors:

@@ -66,7 +66,8 @@ verticalAlign=top;align=center;sketch=0;aspect=fixed;
 
 ## Step 3: Plan the Structure Before Writing XML
 
-Write out a plain-text topology plan first:
+Write this topology plan in your response before generating any XML.
+This is required — do not skip it or generate XML without writing the plan first:
 
 ```
 Containers: [list VPCs, subnets, AZs, accounts]
@@ -76,6 +77,8 @@ Layout direction: [TB for top-down, LR for left-right]
 ```
 
 This prevents orphaned edge references — the single most common structural error.
+
+Only begin generating XML after the topology plan is written out above.
 
 ---
 
@@ -102,6 +105,54 @@ Every diagram MUST begin with this exact skeleton:
   </diagram>
 </mxfile>
 ```
+
+### Minimal reference example
+
+A correct 3-node diagram to use as a structural reference. Every real diagram
+follows this same pattern — more nodes, same structure:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="" agent="Claude Code drawio-aws skill"
+  version="24.0.0" type="device">
+  <diagram name="Architecture" id="diagram-1">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10"
+      guides="1" tooltips="1" connect="1" arrows="1" fold="1"
+      page="0" pageScale="1" pageWidth="1169" pageHeight="827"
+      math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cf1" value="CloudFront"
+          style="shape=mxgraph.aws4.cloudfront;fillColor=#8C4FFF;strokeColor=#ffffff;fontColor=#ffffff;labelPosition=bottom;verticalLabelPosition=top;verticalAlign=top;align=center;sketch=0;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="78" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="alb1" value="ALB"
+          style="shape=mxgraph.aws4.application_load_balancer;fillColor=#8C4FFF;strokeColor=#ffffff;fontColor=#ffffff;labelPosition=bottom;verticalLabelPosition=top;verticalAlign=top;align=center;sketch=0;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="350" y="120" width="78" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="ec2-1" value="EC2 App"
+          style="shape=mxgraph.aws4.ec2;fillColor=#E9822C;strokeColor=#ffffff;fontColor=#ffffff;labelPosition=bottom;verticalLabelPosition=top;verticalAlign=top;align=center;sketch=0;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="600" y="120" width="78" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge-cf-alb" value="HTTPS" edge="1" source="cf1" target="alb1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge-alb-ec2" value="HTTP" edge="1" source="alb1" target="ec2-1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+```
+
+Key patterns to note: containers before service nodes before edges; descriptive
+IDs; column-grid x coordinates (100 → 350 → 600); uniform 78×78 icon size;
+`parent="1"` on all root-level cells including edges.
 
 ### Column-grid coordinate reference
 
